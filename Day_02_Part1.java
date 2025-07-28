@@ -23,183 +23,184 @@ class MinOfThreeNum{
 
 // Q.No - 02 Following patterns using for loop
 
-class ForLoop{
-	
-	static void oneLoop(int number,int n){
-		
-		for(int i=0;i<n;i++){
-			for(int j=0;j<n;j++){
-				if(i==j || j==n-i-1){
-					System.out.print(number+" ");
+	class XForLoop {
+
+		static void oneLoop(int number, int n) {
+			for (int i=0;i<n;i++) {
+				for (int j=0;j<n;j++) {
+					if(i==j || j==n-i- 1) {
+						System.out.print(number + " ");
+					} else {
+						System.out.print("  ");
+					}
 				}
-				else{
-				    System.out.print("  ");
-				}
+				System.out.println();
 			}
-			System.out.println();
 		}
-		
-	}
-	
-	static void RLoop(int n) {
-		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < n; j++) {
-				if ((i == 0 && j < n - 1) || j == 0 || (i == n / 2 && j < n-1)) { 
-					System.out.print("R ");
-				} else {
-					System.out.print("  ");
-				}
-			}
-			System.out.println();
+
+		public static void main(String args[]) {
+			int number = 1;
+			int n = 5;
+
+			oneLoop(number, n);
 		}
 	}
 
-	
-	
-	public static void main(String args[]){
-		
-		int number=1;
-		int n=5;
-		
-		oneLoop(number,n);
-		RLoop(n);
-		
+	class RPatternForLoop {
+
+		static void RLoop(int n) {
+			for (int i=0;i<n;i++) {
+				for (int j=0;j<n;j++) {
+					if ((i==0 && j<n - 1) || j == 0 || (i==n/2 && j<n-1)) {
+						System.out.print("R ");
+					} else {
+						System.out.print("  ");
+					}
+				}
+				System.out.println();
+			}
+		}
+
+		public static void main(String args[]) {
+			int n = 5;
+			RLoop(n);
+		}
 	}
-}
+
+
 
 // Q.No - 03. Write a program to do the following patterns using while loop
 
 
-class WhileLoop{
+	class NumberIncreasePattern {
 
-	
-	public static void numberIncrease(int n, int number)
-	{
-        int i = 0;
-        while (i < n) 
-		{	
-			int s = 0;
-            while (s < Math.abs(n / 2 - i)) 
-			{
-                System.out.print(" ");
-                s++;
-            }   
-            if (i > n / 2) 
-			{
-                int k = 0;
-                while (k < n - i) 
-				{	
-                    System.out.print((number++) + " ");
-                    k++;
-                }
-            } 
-			else 
-			{
-                int j = 0;
-                while (j <= i) 
-				{
-                    System.out.print((number++) + " ");
-                    j++;
-                }
-            }
-            System.out.println();
-            i++;
-        }
+		public static void numberIncrease(int n,int number) {
+			int i=0;
+			while(i<n) {
+				int s=0;
+				while(s<Math.abs(n/2-i)) {
+					System.out.print(" ");
+					s++;
+				}
+
+				if(i>n/2) {
+					int k=0;
+					while (k<n-i) {
+						System.out.print((number++) + " ");
+						k++;
+					}
+				} else {
+					int j=0;
+					while (j<=i) {
+						System.out.print((number++) + " ");
+						j++;
+					}
+				}
+
+				System.out.println();
+				i++;
+			}
+		}
+
+		public static void main(String[] args) {
+			int n=5;
+			int start=1;
+			numberIncrease(n,start);
+		}
 	}
-	
-	public static void wPattern(int n, char ch) 
-	{
-        int i = 0;
-        while (i < n) 
-		{
-            if (i > n / 2) 
-		    {
-                int k = 0;
-                while (k < n - i) 
-				{
-                    System.out.print(ch + " ");
-                    k++;
-                }
-            }   
-		    else  
-		    {
-                int j = 0;
-                while (j <= i) 
-				{
-                    System.out.print(ch + " ");
-                    j++;
-                }
-            }
-            System.out.println();
-            i++;
-        }
-    }
-	
-	public static void main(String[] args){
-		int n = 5;
-		numberIncrease(n, 1);
-		wPattern(n, 'w');
+
+	class WPatternWhileLoop {
+
+		public static void wPattern(int n, char ch) {
+			int i=0;
+			while (i<n) {
+				if(i>n/2) {
+					int k=0;
+					while(k<n-i) {
+						System.out.print(ch + " ");
+						k++;
+					}
+				} else {
+					int j=0;
+					while(j<=i) {
+						System.out.print(ch + " ");
+						j++;
+					}
+				}
+
+				System.out.println();
+				i++;
+			}
+		}
+
+		public static void main(String[] args) {
+			int n=5;
+			char ch='w';
+			wPattern(n, ch);
+		}
 	}
-}			
+		
 
 // Q.No 04 Write a program to do the following patterns using do...while loop
    
-	class doWhileLoop{
-		
-		public static void pascalTriangle(int n) 
-		{
-			int i = 0;
-			do 
-			{
-				int j = 0;
-				do 
-				{
-					if (j >= n - i)
-					{
-						break;
-					}
-					System.out.print(" ");
-					j++;
-				} while(true);
+		class PascalDoWhile {
 
-				int number = 1;
-				j = 0;
-				do 
-				{
-					if (j > i)
-					{
-						break;
-					}
-					System.out.print(number + " ");
-					number = number * (i - j) / (j + 1);
-					j++;
-				} while(true);
-				
-				System.out.println();
-				i++;
-				
-			} while (i < n);
+			public static void pascalTriangle(int n) {
+				int i=0;
+				do{
+					int j=0;
+					do{
+						if(j>=n-i) {
+							break;
+						}
+						System.out.print(" ");
+						j++;
+					} while(true);
+
+					int number=1;
+					j=0;
+					do{
+						if(j>i) {
+							break;
+						}
+						System.out.print(number + " ");
+						number=number*(i-j)/(j+1);
+						j++;
+					} while(true);
+
+					System.out.println();
+					i++;
+
+				} while(i<n);
+			}
+
+			public static void main(String[] args) {
+				Scanner scan = new Scanner(System.in);
+				System.out.print("Enter Rows: ");
+				int n=scan.nextInt();
+
+				pascalTriangle(n);
+			}
 		}
 
-		public static void printString(String s) 
-		{
-			s = s.replaceAll(" ", "");
-			int ind = 0;
-			int size = (int) Math.ceil(Math.sqrt(s.length()));
-			char[][] mat = new char[size][size];
 
-			int i = 0;
-			do 
-			{
-				if (ind >= s.length())
-				{
+
+	class MatrixDoWhile {
+
+		public static void printString(String s) {
+			s = s.replaceAll(" ", "");
+			int ind=0;
+			int size=(int)Math.ceil(Math.sqrt(s.length()));
+			char[][] mat=new char[size][size];
+
+			int i=0;
+			do{
+				if(ind>=s.length()) {
 					break;
 				}
-				int j = 0;
-				do 
-				{
-					if (j >= size || ind >= s.length())
-					{
+				int j=0;
+				do{
+					if(j>= size || ind >= s.length()) {
 						break;
 					}
 					mat[i][j] = s.charAt(ind++);
@@ -209,24 +210,20 @@ class WhileLoop{
 
 				System.out.println();
 				i++;
-			} while (i < size);
-			
+			} while(i<size);
+
 			System.out.println();
 		}
-		
-		public static void main(String[] args)
-		{
+
+		public static void main(String[] args) {
 			Scanner scan = new Scanner(System.in);
-			
-			System.out.println("Enter Rows : Enter the string : ");
-			
-			int n = scan.nextInt();
+			System.out.print("Enter a string: ");
 			String str = scan.nextLine();
-			
-			pascalTriangle(n);
+
 			printString(str);
 		}
 	}
+
 
 
 // Q.No - 5 Define a method to find the sum of even numbers from the series 1, 2, 3, 4, 5, ...n using continue statement.

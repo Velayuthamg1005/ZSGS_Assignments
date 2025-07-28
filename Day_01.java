@@ -17,6 +17,10 @@ class ScopeOfVariables{
 		sov.stu_name="Velayutham";
 		String nickName="Vels";		//Local Variable
 		
+		if(stu_id==1){				//Block Variable
+			System.out.println("He is a Student");
+		}
+		
 		System.out.println("Student Id is: "+sov.stu_id);
 		System.out.println("Student Name is: "+sov.stu_name);
 		System.out.println("Student NickName is: "+nickName);
@@ -30,7 +34,9 @@ class ScopeOfVariables{
 
 class DeclareAndPrintDT{
 	public static void main(String args[]){
+		
 
+		byte n1=120;
 		int emp_id=101;
 		String emp_name="Velayutham";
 		char emp_initial='G';
@@ -40,6 +46,7 @@ class DeclareAndPrintDT{
 		double emp_salary=150000;
 		short emp_noOfAttempts=2;
 		
+		System.out.println("Employee Count: "+byte);
 		System.out.println("Employee Id: "+emp_id);
 		System.out.println("Employee Name: "+emp_name);
 		System.out.println("Employee Initial: "+emp_initial);

@@ -139,6 +139,8 @@ class Vehicle{
 	}
 } 
 
+
+
 // Q-No 06 Write a program that would print the information.Can use format method to format the above said output.
 
 class Employeee{
@@ -170,3 +172,81 @@ class Employeee{
 	}
 	
 }
+
+// Q-No 5 Simple inventory system 
+
+class Store {
+    private static String store_name;
+    private static String store_location;
+	
+    public static void setStoreDetails(String store_name, String store_location) {
+        store_name=store_name;
+        store_location=store_location;
+    }
+
+    private List<Product> productList;
+
+    public Store() {
+        productList = new ArrayList<>();
+    }
+
+    public static void displayStoreDetails() {
+        System.out.println("Store Name     : " + store_name);
+        System.out.println("Store Location : " + store_location);
+    }
+
+    public void add_product(Product product) {
+        productList.add(product);
+    }
+
+    public void displayAllProducts() {
+        System.out.println("Product List:");
+
+        for (Product product : productList) {
+            product.displayProduct();
+        }
+    }
+}
+
+class Product {
+    private int productId;
+    private String name;
+    private double price;
+    private int quantity;
+
+    public Product(int productId, String name, double price, int quantity) {
+        this.productId = productId;
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+    }
+
+    public void displayProduct() {
+        System.out.println("Product ID   : " + productId);
+        System.out.println("Product Name : " + name);
+        System.out.println("Price        : Rs. " + price);
+        System.out.println("Quantity     : " + quantity);
+    }
+}
+
+
+class InventorySystem {
+    public static void main(String[] args) {
+        Store.setStoreDetails("Vicky Electronics", "Tirunelveli");
+
+        Store store = new Store();
+
+        Product p1 = new Product(101, "Bluetooth Speaker", 1599.00, 10);
+        Product p2 = new Product(102, "Wireless Mouse", 699.00, 25);
+        Product p3 = new Product(103, "USB Cable", 149.00, 50);
+		
+        store.add_product(p1);
+        store.add_product(p2);
+        store.add_product(p3);
+
+        Store.displayStoreDetails();
+        store.displayAllProducts();
+    }
+}
+
+
