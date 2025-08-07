@@ -25,10 +25,10 @@ class MinOfThreeNum{
 
 	class XForLoop {
 
-		static void oneLoop(int number, int n) {
+		static void XLoop(int number, int n) {
 			for (int i=0;i<n;i++) {
 				for (int j=0;j<n;j++) {
-					if(i==j || j==n-i- 1) {
+					if(i==j || j==n-i-1) {
 						System.out.print(number + " ");
 					} else {
 						System.out.print("  ");
@@ -42,7 +42,7 @@ class MinOfThreeNum{
 			int number = 1;
 			int n = 5;
 
-			oneLoop(number, n);
+			XLoop(number, n);
 		}
 	}
 

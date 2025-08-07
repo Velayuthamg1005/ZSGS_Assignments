@@ -99,7 +99,11 @@ class Employee{
 	}
 }
 
-// Q.No 04 Design the Vehicle class that stores information about a vehicle such as its vehicle ID, brand name, and price, such that it can internally keep track of how many vehicles have been created so far, without requiring manual counting from outside the class.
+/* 
+	Q.No 04 Design the Vehicle class that stores information about a vehicle such as its vehicle ID, brand name, and price, 
+	such that it can internally keep track of how many vehicles have been created so far, 
+	without requiring manual counting from outside the class.
+*/
 
 class Vehicle{
 	int vehicle_id;
@@ -179,7 +183,7 @@ class Store {
     private static String store_name;
     private static String store_location;
 	
-    public static void setStoreDetails(String store_name, String store_location) {
+    public static void setStoreDetails(String store_name,String store_location) {
         store_name=store_name;
         store_location=store_location;
     }
@@ -187,12 +191,12 @@ class Store {
     private List<Product> productList;
 
     public Store() {
-        productList = new ArrayList<>();
+        productList=new ArrayList<>();
     }
 
     public static void displayStoreDetails() {
-        System.out.println("Store Name     : " + store_name);
-        System.out.println("Store Location : " + store_location);
+        System.out.println("Store Name     : " +store_name);
+        System.out.println("Store Location : " +store_location);
     }
 
     public void add_product(Product product) {
@@ -202,7 +206,7 @@ class Store {
     public void displayAllProducts() {
         System.out.println("Product List:");
 
-        for (Product product : productList) {
+        for (Product product:productList) {
             product.displayProduct();
         }
     }
@@ -222,10 +226,10 @@ class Product {
     }
 
     public void displayProduct() {
-        System.out.println("Product ID   : " + productId);
-        System.out.println("Product Name : " + name);
-        System.out.println("Price        : Rs. " + price);
-        System.out.println("Quantity     : " + quantity);
+        System.out.println("Product ID   : " +productId);
+        System.out.println("Product Name : " +name);
+        System.out.println("Price        : Rs. " +price);
+        System.out.println("Quantity     : " +quantity);
     }
 }
 

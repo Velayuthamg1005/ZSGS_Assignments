@@ -243,7 +243,7 @@ class ThreeD extends TwoD {
     }
 }
 
-public class Main {
+class Main {
     public static void main(String[] args) {
        
         ThreeD t1 = new ThreeD();
@@ -351,7 +351,7 @@ class Circle extends Point{
 	
 }
 
-class Main{
+class PointMain{
 	public static void main(String args[]){
 		
 		Scanner sc=new Scanner(System.in);

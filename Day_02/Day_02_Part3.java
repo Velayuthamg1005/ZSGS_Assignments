@@ -127,15 +127,15 @@ class StringRandom{
 		
 		int result=0;
 		
-		for(char c: s.toCharArray()){
+		for(char c:s.toCharArray()){
 			result=result^c;
 		}
 		
-		for(char c: t.toCharArray()){
+		for(char c:t.toCharArray()){
 			result=result^c;
 		}
 		
-		return (char) result;
+		return (char)result;
 	}
 }
 

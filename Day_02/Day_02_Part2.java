@@ -388,7 +388,7 @@ class MenuDrivenMatrix{
 		for(int i=0;i<row;i++){
 			int rowSum=0;
 			for(int j=0;j<col;j++){
-				sum=sum+matrix[i][j];
+				rowSum=rowSum+matrix[i][j];
 			}
 			System.out.println("Row Sum: "+rowSum);
 		}
@@ -399,7 +399,7 @@ class MenuDrivenMatrix{
 		for(int j=0;j<col;j++){
 			int colSum=0;
 			for(int i=0;i<row;i++){
-				sum=sum+matrix[i][j];
+				colSum=colSum+matrix[i][j];
 			}
 			System.out.println("Column Sum: "+colSum);
 		}

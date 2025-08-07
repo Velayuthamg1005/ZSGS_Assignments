@@ -3,7 +3,7 @@ import java.util.*;
 
 class ScopeOfVariables{
 	
-	int stu_id;
+	static int stu_id;
 	String stu_name;	// Instance Variable
 	
 	final double weight=80;
@@ -17,7 +17,7 @@ class ScopeOfVariables{
 		sov.stu_name="Velayutham";
 		String nickName="Vels";		//Local Variable
 		
-		if(stu_id==1){				//Block Variable
+		if(ScopeOfVariables.stu_id==1){				//Block Variable
 			System.out.println("He is a Student");
 		}
 		
@@ -46,7 +46,7 @@ class DeclareAndPrintDT{
 		double emp_salary=150000;
 		short emp_noOfAttempts=2;
 		
-		System.out.println("Employee Count: "+byte);
+		System.out.println("Employee Count: "+n1);
 		System.out.println("Employee Id: "+emp_id);
 		System.out.println("Employee Name: "+emp_name);
 		System.out.println("Employee Initial: "+emp_initial);
@@ -83,7 +83,7 @@ class TwoNumEqualOrNot{
 		
 		int result=x^y;		// XOR Approach
 		
-		boolean[] valid=new boolean[result+1];\
+		boolean[] valid=new boolean[result+1];
 		valid[result]=true;
 		
 		
