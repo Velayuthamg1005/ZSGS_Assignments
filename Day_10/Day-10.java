@@ -267,13 +267,15 @@ class LinkedListExample {
 
 class HashSetExample {
     public static void main(String[] args) {
-        HashSet<String> hs=new HashSet<>();
+        LinkedHashSet<String> hs=new LinkedHashSet<>();
 
         // a. Append specified elements to the end of a hash set
         hs.add("Apple");
         hs.add("Banana");
         hs.add("Cherry");
+		hs.add("Orange");
         System.out.println("After Adding: "+hs);
+		
 
         // b. Iterate through all elements in a hash set
         for (String fruit:hs) {

@@ -1,7 +1,7 @@
 import java.util.*;
 
 /*
-	We want to store the information about different vehicles. 
+	1.We want to store the information about different vehicles. 
 	Create a class named Vehicle with two data member named mileage and price. Create its two subclasses
 		---Car with data members to store ownership cost, warranty (by years), seating capacity and fuel type (diesel or petrol).
 		---Bike with data members to store the number of cylinders, number of gears, cooling type(air, liquid or oil), 

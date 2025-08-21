@@ -13,8 +13,8 @@ class ReturnBinarySum{
 	}
 	
 	static String sumBinary(String a,String b){
-		String sum ="";
-		
+		String sum =""; 
+		 
 		int x=a.length()-1;
 		int y=b.length()-1;
 		
@@ -33,7 +33,7 @@ class ReturnBinarySum{
 			int total=solveA+solveB+carry;
 			int digit=total%2;
 			carry=total/2;
-			
+			 
 			sum=digit+sum;
 			x--;
 			y--;
@@ -142,7 +142,7 @@ class StringRandom{
 // Q-No 05 Given two strings s and t, return true if s is a subsequence of t, or false otherwise.
 
 class SubsequenceOrNot{
-	public static void main(String args[]){
+	public static void main(String args[]){ 
 		
 		String s="abwc";
 		String t="ahbgdc";

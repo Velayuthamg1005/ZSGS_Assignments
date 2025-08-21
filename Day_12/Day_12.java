@@ -1,0 +1,235 @@
+import java.util.*;
+/*
+
+	1. Write a Java program to demonstrate multithreading by extending the Thread class.
+		--->Create a class MyThread that extends Thread.
+		--->Override the run() method to display the thread name and a message five times with a delay of 500 milliseconds between prints.
+		--->In the main() method, create two objects of MyThread and start them.
+		--->Each thread prints its message independently, showing concurrent execution.
+‌
+	2. Write a Java program to create a thread using the Runnable interface.
+		--->Create a class TaskRunner that implements Runnable.
+		--->Inside the run() method, print the current thread name and a task-specific message 10 times with a delay of 1000ms.
+		--->In the main() method, create two Thread objects passing different TaskRunner instances and start both threads.
+		--->The console should reflect the concurrent execution of both tasks.
+‌
+	3. Write a Java program where one thread prints only even numbers and another prints only odd numbers from 1 to 20. Synchronize the threads so that they print alternately (i.e., 1 2 3 4 ...).
+‌
+	4. Create a Java program with a shared counter. Spawn 3 threads, where each thread increments the counter 1000 times. Use synchronization to avoid race conditions and display the final value.
+‌
+	5. Implement a basic producer-consumer problem using wait() and notify().
+		--->Producer thread should add items to a shared buffer.
+		--->Consumer thread should remove items.
+	Ensure the buffer size is limited to 5 items.. Use Threads to implement the ATM machine, where create thread to check the PIN number, another thread to perform the cash withdrawal, another one to check the balance amount and print the receipt.
+
+*/
+
+
+
+/*1. 
+
+	Write a Java program to demonstrate multithreading by extending the Thread class.
+		--->Create a class MyThread that extends Thread.
+		--->Override the run() method to display the thread name and a message five times with a delay of 500 
+			milliseconds between prints.
+		--->In the main() method, create two objects of MyThread and start them.
+		--->Each thread prints its message independently, showing concurrent execution.
+		
+*/
+
+class MyThread extends Thread
+{
+	
+	public void run() {
+		for(int i=0;i<=5;i++){
+			System.out.println(Thread.currentThread().getName());
+	
+				try{
+					Thread.sleep(1000);
+				}
+				catch(Exception e){
+					System.out.println(e.getMessage());
+				}
+			}
+	}
+	
+}
+
+class ThreadMain{
+	public static void main(String args[]){
+		MyThread t1=new MyThread();
+		MyThread t2=new MyThread();
+		
+		t1.setName("First Thread");
+		t2.setName("Second Thread");
+		
+		t1.start();
+		t2.start();
+	}
+}
+
+/*
+
+		2. Write a Java program to create a thread using the Runnable interface.
+		--->Create a class TaskRunner that implements Runnable.
+		--->Inside the run() method, print the current thread name and a task-specific message 10 times with a delay of 1000ms.
+		--->In the main() method, create two Thread objects passing different TaskRunner instances and start both threads.
+		--->The console should reflect the concurrent execution of both tasks.
+*/
+
+class TaskRunner implements Runnable{
+	
+public void run(){
+	for(int i=0;i<=5;i++){
+		System.out.println("Current Thread: "+Thread.currentThread().getName());
+		try{
+			Thread.sleep(2000);
+		}
+		catch(Exception e){
+			System.out.println(e.getMessage());
+		}
+	}
+}
+	
+}
+
+class ThreadInterfaceMain{
+	public static void main(String args[]){
+		TaskRunner r1=new TaskRunner();
+		Thread t1=new Thread(r1);
+		
+		TaskRunner r2=new TaskRunner();
+		Thread t2=new Thread(r2);
+		
+		t1.setName("Created First Thread");
+		t2.setName("Created Second Thread");
+		
+		t1.start();
+		t2.start();
+		
+	}
+}
+
+/*
+
+	3. Write a Java program where one thread prints only even numbers and another prints only odd numbers from 1 to 20.
+	Synchronize the threads so that they print alternately (i.e., 1 2 3 4 ...).
+
+*/
+
+class NumberPrinter {
+    private int num = 1;
+    private int max = 20;
+
+    public void printOdd() {
+        while (num<=max) {
+            if (num%2==0) { 
+				
+                try {
+                    wait(); 
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+				
+            }
+           if (num<=max) {
+                System.out.print(num+ " ");
+                num++;
+                notify(); 
+            }
+        }
+    }
+
+    public void printEven() {
+        while (num<=max) {
+           if (num%2!=0) { 
+                try {
+                    wait(); 
+                } catch(InterruptedException e) {
+                    e.printStackTrace();
+                }
+				
+            }
+           if (num<=max) {
+                System.out.print(num+ " ");
+                num++;
+                notify(); 
+            }
+        }
+    }
+}
+
+class OddEvenSync {
+    public static void main(String[] args) {
+        NumberPrinter printer = new NumberPrinter();
+
+        Thread oddThread = new Thread(() -> printer.printOdd());
+        Thread evenThread = new Thread(() -> printer.printEven());
+
+        oddThread.start();
+        evenThread.start();
+    }
+}
+
+/*
+	4. Create a Java program with a shared counter. 
+	Spawn 3 threads, where each thread increments the counter 1000 times.
+	Use synchronization to avoid race conditions and display the final value.
+	
+*/
+
+class Counter
+{
+	private int count = 0;
+	public synchronized void increment()
+	{
+		count++;
+	}
+	public int getCount()
+	{
+		return count;
+	}
+}
+class ThreadCounter
+{
+	public static void main(String[] args)
+	{
+		Counter c = new Counter();
+		
+		Thread t1 = new Thread(()->{
+			for(int i = 0; i < 1000; i++)
+			{
+				c.increment();
+			}
+		});
+		
+		Thread t2 = new Thread(()->{
+			for(int i = 0; i < 1000; i++)
+			{
+				c.increment();
+			}
+		});
+		
+		Thread t3 = new Thread(()->{
+			for(int i = 0; i < 1000; i++)
+			{
+				c.increment();
+			}
+		});
+		
+		t1.start();
+		t2.start();
+		t3.start();
+		
+		try{
+			t1.join();
+			t2.join();
+			t3.join();
+		}
+		catch(InterruptedException e){
+		}
+		
+		System.out.println("Final Counter Value : " + c.getCount());
+	}
+}
+
